@@ -4353,16 +4353,4 @@ void ujungcerobong(int r, int g, int b) {
 	glVertex3d(48.078285, 85.756302, 16.067366);
 	glEnd();
 }
-//atasdepan(255,255,255);
-//badancerobong(255,255,255);
-//bawah(255,255,255);
-//body(255,255,255);
-//item(255,255,255);
-//kolam(255,255,255);
-//lantaidepan(255,255,255);
-//lantai(255,255,255);
-//lekungan(255,255,255);
-//samping(255,255,255);
-//sirine(255,255,255);
-//tiang(255,255,255);
-//ujungcerobong(255,255,255);
+
