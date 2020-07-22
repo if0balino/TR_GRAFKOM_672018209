@@ -18,6 +18,7 @@ float xrot = 0.0f;
 float yrot = 0.0f;
 float xdiff = 0.0f;
 float ydiff = 0.0f;
+float pos = 0.0f;
 bool mouseDown = false;
 int is_depth;
 
@@ -30,7 +31,6 @@ void initcahaya(void)
     GLfloat mat_shininess[] = { 50.0 };
     GLfloat light_position[] = { 1.0, 0.0, 1.0, 0.0 };
 
-    glClearColor(0.0, 0.0, 0.0, 0.0);
 
     glShadeModel(GL_SMOOTH);
     glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
@@ -60,10 +60,6 @@ void mouse(int button, int state, int x, int y) {
 
     else
         mouseDown = false;
-
-    //else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
-    //    std::cout << "KLIK KANAN" << " = anda menekan tombol " << GLUT_RIGHT_BUTTON << std::endl;
-    //}
     display();
 }
 
@@ -73,8 +69,7 @@ void mouseMotion(int x, int y) {
         xrot = y + ydiff;
 
         glLoadIdentity();
-        //gluLookAt(0.0f, 300.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f); //mengatur penglihatan objek
-        gluLookAt(0.0f, 0.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+        gluLookAt(0.0f, 40.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f); //mengatur penglihatan objek
         glRotatef(xrot, 1.0, 0.0, 0.0);
         glRotatef(yrot, 0.0, 1.0, 0.0);
 
@@ -85,8 +80,6 @@ void mouseMotion(int x, int y) {
 
 
 void keyboard(unsigned char key, int x, int y) {
-
-    glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT);
     std::cout << key << " = anda menekan tombol " << key << std::endl;
 
@@ -126,27 +119,6 @@ void keyboard(unsigned char key, int x, int y) {
     case 'M': //putar kekanan
         glRotatef(-2.0, 0.0, 0.0, 1.0);
         break;
-        /*
-    case '0': //rotasi kekanan
-        glRotatef(2.0, 0.0, 1.0, 0.0);
-        break;
-    case '9': //rotasi kekiri
-        glRotatef(-2.0, 0.0, 1.0, 0.0);
-        break;
-    case '1': //putar kekiri
-        glRotatef(2.0, 0.0, 0.0, 1.0);
-        break;
-    case '3': //putar kekanan
-        glRotatef(-2.0, 0.0, 0.0, 1.0);
-        break;
-    case '2': //rotasi kedepan
-        glRotatef(2.0, 1.0, 0.0, 0.0);
-        break;
-    case '4': //rotasi kebelakang
-        glRotatef(-2.0, 1.0, 0.0, 0.0);
-        break;
-    case '5':
-    */
     case 'p':
     case 'P':
         if (is_depth) {
@@ -186,13 +158,13 @@ void onSpecialKeyPressed(int key, int x, int y) {
 
 
 void display() {
-
+    
     if (is_depth)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     else
         glClear(GL_COLOR_BUFFER_BIT);
     
-    
+
     glBegin(GL_POLYGON);
     glColor3f(0.0, 1.0, 1.0);
     glVertex3f(0.0, 0.0, 0.0);
@@ -200,7 +172,6 @@ void display() {
     glVertex3f(0.0, 0.0, 0.0);
     glVertex3f(0.0, 0.0, 0.0);
     glEnd();
-
     atasdepan(211, 236, 237);
     badancerobong(211, 236, 237);
     bawah(153, 251, 255);
@@ -214,11 +185,15 @@ void display() {
     sirine(255, 97, 242);
     tiang(232, 252, 252);
     ujungcerobong(232, 252, 252);
-	
+    laut(10, 0, 97);
+    Pelampung(245, 245, 66);
+    cerobong(156, 134, 93);
+
 
     glPushMatrix();
     glPopMatrix();
     glutSwapBuffers();
+    glTranslatef(-0.003, 0.0, 0.0);
 }
 
 
@@ -255,7 +230,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("TR_GRAFKOM_672018209");
 
     //inisialisasi glut
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(1.0, 0.73, 0.27, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glPointSize(20);
@@ -264,7 +239,7 @@ int main(int argc, char** argv) {
     is_depth = 1;
     glLoadIdentity(); // dihitung dengan matrix identitas
     //gluOrtho2D(0.0, 640.0, 0.0, 480.0); // untuk memberikan sistem koordinat kepada windows yang kita buat
-    gluLookAt(0.0f, 0.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    gluLookAt(0.0f, 40.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
     initcahaya();
     glutDisplayFunc(display);
