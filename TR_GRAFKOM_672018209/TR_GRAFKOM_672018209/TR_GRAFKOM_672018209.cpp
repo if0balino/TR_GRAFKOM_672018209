@@ -29,16 +29,19 @@ void initcahaya(void)
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_shininess[] = { 50.0 };
     GLfloat light_position[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_color[] = { 1.0 , 1.0, 1.0, 1.0 };
 
     glClearColor(0.0, 0.0, 0.0, 0.0);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glShadeModel(GL_SMOOTH);
+    //glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    //glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
     glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
     glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+    glLightfv(GL_LIGHT0, GL_COLOR, light_color);
     
-    glShadeModel(GL_SMOOTH);
+    
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glEnable(GL_DEPTH_TEST);
@@ -71,7 +74,7 @@ void mouseMotion(int x, int y) {
 
         glLoadIdentity();
         //gluLookAt(0.0f, 300.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f); //mengatur penglihatan objek
-        gluLookAt(0.0f, 0.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+        gluLookAt(0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
         glRotatef(xrot, 1.0, 0.0, 0.0);
         glRotatef(yrot, 0.0, 1.0, 0.0);
 
@@ -89,6 +92,7 @@ void keyboard(unsigned char key, int x, int y) {
 
     switch (key)
     {
+
     case 'z': //zoom +
     case 'Z':
         glTranslatef(0.0, 0.0, 3.0);
@@ -98,23 +102,31 @@ void keyboard(unsigned char key, int x, int y) {
         glTranslatef(0.0, 0.0, -3.0);
         break;
 
-    case 'w': //geser atas
+    case 'w': //rotasi kebelakang
     case 'W':
-        glTranslatef(0.0, 3.0, 0.0);
+        glRotatef(-2.0, 1.0, 0.0, 0.0);
         break;
-    case 'd': //geser kanan
+    case 'd': //rotasi kekanan
     case 'D':
-        glTranslatef(3.0, 0.0, 0.0);
+        glRotatef(2.0, 0.0, 1.0, 0.0);
         break;
-    case 's': //geser bawah
+    case 's': //rotasi kedepan
     case 'S':
-        glTranslatef(0.0, -3.0, 0.0);
+        glRotatef(2.0, 1.0, 0.0, 0.0);
         break;
-    case 'a': //geser kiri
+    case 'a': //rotasi kiri
     case 'A':
-        glTranslatef(-3.0, 0.0, 0.0);
+        glRotatef(-2.0, 0.0, 1.0, 0.0);
         break;
-
+    case 'n': //putar kekiri
+    case 'N':
+        glRotatef(2.0, 0.0, 0.0, 1.0);
+        break;
+    case 'm':
+    case 'M': //putar kekanan
+        glRotatef(-2.0, 0.0, 0.0, 1.0);
+        break;
+        /*
     case '0': //rotasi kekanan
         glRotatef(2.0, 0.0, 1.0, 0.0);
         break;
@@ -134,6 +146,9 @@ void keyboard(unsigned char key, int x, int y) {
         glRotatef(-2.0, 1.0, 0.0, 0.0);
         break;
     case '5':
+    */
+    case 'p':
+    case 'P':
         if (is_depth) {
             is_depth = 0;
             glDisable(GL_DEPTH_TEST);
@@ -146,6 +161,27 @@ void keyboard(unsigned char key, int x, int y) {
     display();
 
 }
+
+
+void onSpecialKeyPressed(int key, int x, int y) {
+    std::cout << key << " = anda menekan tombol " << key << std::endl;
+    switch (key) {
+    case GLUT_KEY_UP:
+        glTranslatef(0.0, 3.0, 0.0);
+        break;
+    case GLUT_KEY_DOWN:
+        glTranslatef(0.0, -3.0, 0.0);
+        break;
+    case GLUT_KEY_LEFT:
+        glTranslatef(-3.0, 0.0, 0.0);
+        break;
+    case GLUT_KEY_RIGHT:
+        glTranslatef(3.0, 0.0, 0.0);
+        break;
+    }
+    display();
+}
+
 
 
 
@@ -220,13 +256,14 @@ int main(int argc, char** argv) {
     is_depth = 1;
     glLoadIdentity(); // dihitung dengan matrix identitas
     //gluOrtho2D(0.0, 640.0, 0.0, 480.0); // untuk memberikan sistem koordinat kepada windows yang kita buat
-    gluLookAt(0.0f, 0.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    gluLookAt(0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
     initcahaya();
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
     glutMotionFunc(mouseMotion);
     glutKeyboardFunc(keyboard);
+    glutSpecialFunc(onSpecialKeyPressed);
     glutReshapeFunc(ukuran);
     glutIdleFunc(display);
     glutMainLoop();
