@@ -5,8 +5,10 @@
 
 #include "ImageBMP.h"
 
-GLuint _textureID;
-GLuint _texture2ID;
+GLuint _textureID; //laut
+GLuint _texture2ID; //jendela
+GLuint _texture3ID; //sunset
+GLuint _texture4ID; //milki
 
 
 
@@ -17,12 +19,13 @@ void mouse(int button, int state, int x, int y);
 void mouseMotion(int x, int y);
 void keyboard(unsigned char, int, int);
 
-
+float rotx = 0.0f;
 float xrot = 0.0f;
 float yrot = 0.0f;
 float xdiff = 0.0f;
 float ydiff = 0.0f;
 float pos = 0.0f;
+float posX = 0.0f;
 bool mouseDown = false;
 int is_depth;
 
@@ -30,6 +33,8 @@ int is_depth;
 void initRendering() {
     _textureID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/laut.bmp");
    _texture2ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/j.bmp");
+   _texture3ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/senja.bmp");
+   _texture4ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/milki1.bmp");
 }
 
 
@@ -116,6 +121,7 @@ void keyboard(unsigned char key, int x, int y) {
     case 'd': //rotasi kekanan
     case 'D':
         glRotatef(2.0, 0.0, 1.0, 0.0);
+        rotx += 2.0;
         break;
     case 's': //rotasi kedepan
     case 'S':
@@ -124,6 +130,7 @@ void keyboard(unsigned char key, int x, int y) {
     case 'a': //rotasi kiri
     case 'A':
         glRotatef(-2.0, 0.0, 1.0, 0.0);
+        rotx += -2.0;
         break;
     case 'n': //putar kekiri
     case 'N':
@@ -144,6 +151,7 @@ void keyboard(unsigned char key, int x, int y) {
             glEnable(GL_DEPTH_TEST);
         }
     }
+    std::cout << "rotx: " << rotx << std::endl;
     display();
 
 }
@@ -160,11 +168,15 @@ void onSpecialKeyPressed(int key, int x, int y) {
         break;
     case GLUT_KEY_LEFT:
         glTranslatef(-3.0, 0.0, 0.0);
+        posX += -3.0;
+
         break;
     case GLUT_KEY_RIGHT:
         glTranslatef(3.0, 0.0, 0.0);
+        posX += 3.0;
         break;
     }
+    std::cout << posX << std::endl;
     display();
 }
 
@@ -212,9 +224,13 @@ void display() {
     //glGenTextures(1, &_textureID);
     //glBindTexture(GL_TEXTURE_2D, _textureID);
     //glBindTexture(GL_TEXTURE_2D, _textureID);
+    
     glEnable(GL_TEXTURE_2D);
     laut(255, 255, 255);
-    
+    //glPushMatrix();
+    //glTranslatef(1200.0, 0.0, 0.0);
+    //laut(255, 255, 255);
+    glPopMatrix();
     Pelampung(245, 245, 66);
     cerobong(156, 134, 93);
     glEnable(GL_TEXTURE_2D);
@@ -222,11 +238,26 @@ void display() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     samping(232, 252, 252);
+    glBindTexture(GL_TEXTURE_2D, _texture3ID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    langit(255, 255, 225);
+    glBindTexture(GL_TEXTURE_2D, _texture4ID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glPushMatrix();
+    glTranslatef(-1000.0, 500.0, 0.0);
+    glRotatef(rotx, 2.0,0.0, 0.0);
+    langit(255, 255, 225);
+    glPopMatrix();
+    
     glDisable(GL_TEXTURE_2D);
     glPushMatrix();
     glPopMatrix();
     glutSwapBuffers();
     glTranslatef(-0.003, 0.0, 0.0);
+    posX -= 0.003;
 }
 
 
@@ -248,7 +279,7 @@ void ukuran(int lebar, int tinggi) {
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(55.0, lebar / tinggi, 50.0, 500.0);
+    gluPerspective(55.0, lebar / tinggi, 50.0, 2500.0);
     glTranslatef(-5.0, -5.0, -150.0);
     glMatrixMode(GL_MODELVIEW);
 }

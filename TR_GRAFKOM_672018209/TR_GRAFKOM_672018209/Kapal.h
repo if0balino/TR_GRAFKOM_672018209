@@ -5675,10 +5675,14 @@ void ujungcerobong(int r, int g, int b) {
 void langit(int r, int g, int b) {
 	glColor3ub(r, g, b);
 	glBegin(GL_POLYGON);
-	glVertex3d(-299.699188, 591.422913, 591.422913);
-	glVertex3d(-299.699127, -591.422913, 591.422913);
-	glVertex3d(-299.699127, -591.422913, -591.422913);
-	glVertex3d(-299.699188, 591.422913, -591.422913);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3d(299.699188, 591.422913, 591.422913);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3d(299.699127, -591.422913, 591.422913);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3d(299.699127, -591.422913, -591.422913);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3d(299.699188, 591.422913, -591.422913);
 	glEnd();
 }
 //atasdepan(255, 255, 255);
