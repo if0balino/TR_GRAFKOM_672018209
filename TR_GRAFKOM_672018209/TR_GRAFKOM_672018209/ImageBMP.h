@@ -1,7 +1,8 @@
 #pragma once
 #include<stdio.h>
 #include<iostream>
-#include<glut.h>
+//#include<glut.h>
+#include <GL/freeglut.h>
 GLuint loadBMP_custom(const char* imagepath) {
 	unsigned char header[54];
 	unsigned int dataPos;

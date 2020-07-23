@@ -3,6 +3,9 @@
 #include <math.h>
 #include "Kapal.h"
 
+#include "ImageBMP.h"
+
+GLuint _textureID;
 
 
 
@@ -21,6 +24,11 @@ float ydiff = 0.0f;
 float pos = 0.0f;
 bool mouseDown = false;
 int is_depth;
+
+
+void initRendering() {
+    _textureID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/laut.bmp");
+}
 
 
 void initcahaya(void)
@@ -163,6 +171,11 @@ void display() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     else
         glClear(GL_COLOR_BUFFER_BIT);
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, _textureID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
 
     glBegin(GL_POLYGON);
@@ -189,7 +202,7 @@ void display() {
     Pelampung(245, 245, 66);
     cerobong(156, 134, 93);
 
-
+    glDisable(GL_TEXTURE_2D);
     glPushMatrix();
     glPopMatrix();
     glutSwapBuffers();
@@ -242,6 +255,7 @@ int main(int argc, char** argv) {
     gluLookAt(0.0f, 40.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
     initcahaya();
+    initRendering();
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
     glutMotionFunc(mouseMotion);

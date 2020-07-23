@@ -4597,9 +4597,13 @@ void lantai(int r, int g, int b) {
 void laut(int r, int g, int b) {
 	glColor3ub(r, g, b);
 	glBegin(GL_POLYGON);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3d(-594.587341, 35.151726, 594.587341);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3d(594.587341, 35.151726, 594.587341);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3d(594.587341, 35.151726, -594.587341);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3d(-594.587341, 35.151726, -594.587341);
 	glEnd();
 }
