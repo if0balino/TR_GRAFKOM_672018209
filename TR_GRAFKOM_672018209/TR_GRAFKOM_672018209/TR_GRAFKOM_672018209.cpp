@@ -3,6 +3,10 @@
 #include <math.h>
 #include "Kapal.h"
 
+#include "ImageBMP.h"
+
+GLuint _textureID;
+GLuint _texture2ID;
 
 
 
@@ -23,13 +27,19 @@ bool mouseDown = false;
 int is_depth;
 
 
+void initRendering() {
+    _textureID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/laut.bmp");
+   _texture2ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/j.bmp");
+}
+
+
 void initcahaya(void)
 {
     GLfloat mat_ambient[] = { 1.0, 1.0, 1.0, 0.0 };
     GLfloat mat_diffuse[] = { 1.0, 1.0, 1.0, 0.0 };
     GLfloat mat_specular[] = { 0.0, 1.0, 0.0, 0.0 };
     GLfloat mat_shininess[] = { 50.0 };
-    GLfloat light_position[] = { 100.0, 100.0, 100.0, 0.0 };
+    GLfloat light_position[] = { 1.0, 0.0, 1.0, 0.0 };
 
 
     glShadeModel(GL_SMOOTH);
@@ -167,6 +177,11 @@ void display() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     else
         glClear(GL_COLOR_BUFFER_BIT);
+
+    
+    glBindTexture(GL_TEXTURE_2D, _textureID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
 
     glBegin(GL_POLYGON);
@@ -185,15 +200,29 @@ void display() {
     lantaidepan(255, 247, 156);
     lantai(255, 191, 191);
     lekungan(153, 251, 255);
-    samping(33, 174, 255);
+    //_texture2ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/jendela.bmp");
+    //glGenTextures(1, &_texture2ID);
+    //glBindTexture(GL_TEXTURE_2D, _texture2ID);
+    
     sirine(255, 97, 242);
     tiang(232, 252, 252);
     ujungcerobong(232, 252, 252);
-    laut(10, 0, 97);
+    //laut(10, 0, 97);
+    //_textureID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/laut.bmp");
+    //glGenTextures(1, &_textureID);
+    //glBindTexture(GL_TEXTURE_2D, _textureID);
+    //glBindTexture(GL_TEXTURE_2D, _textureID);
+    glEnable(GL_TEXTURE_2D);
+    laut(255, 255, 255);
+    
     Pelampung(245, 245, 66);
     cerobong(156, 134, 93);
-
-
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, _texture2ID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    samping(232, 252, 252);
+    glDisable(GL_TEXTURE_2D);
     glPushMatrix();
     glPopMatrix();
     glutSwapBuffers();
@@ -246,6 +275,7 @@ int main(int argc, char** argv) {
     gluLookAt(0.0f, 40.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
     initcahaya();
+    initRendering();
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
     glutMotionFunc(mouseMotion);
