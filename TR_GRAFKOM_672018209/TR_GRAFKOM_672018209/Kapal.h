@@ -5664,7 +5664,15 @@ void ujungcerobong(int r, int g, int b) {
 	glVertex3d(48.078285, 85.756302, 16.067366);
 	glEnd();
 }
-
+void langit(int r, int g, int b) {
+	glColor3ub(r, g, b);
+	glBegin(GL_POLYGON);
+	glVertex3d(-299.699188, 591.422913, 591.422913);
+	glVertex3d(-299.699127, -591.422913, 591.422913);
+	glVertex3d(-299.699127, -591.422913, -591.422913);
+	glVertex3d(-299.699188, 591.422913, -591.422913);
+	glEnd();
+}
 //atasdepan(255, 255, 255);
 //badancerobong(255, 255, 255);
 //bawah(255, 255, 255);
