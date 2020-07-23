@@ -5082,9 +5082,13 @@ void Pelampung(int r, int g, int b) {
 void samping(int r, int g, int b) {
 	glColor3ub(r, g, b);
 	glBegin(GL_POLYGON);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3d(-57.034309, 67.755302, 23.44426);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3d(-57.034309, 55.755302, 23.44426);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3d(84.965691, 55.755302, 23.44426);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3d(84.965691, 67.755302, 23.44426);
 	glEnd();
 	glBegin(GL_POLYGON);
