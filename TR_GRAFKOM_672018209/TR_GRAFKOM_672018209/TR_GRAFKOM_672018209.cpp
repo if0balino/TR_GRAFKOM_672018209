@@ -29,7 +29,7 @@ void initcahaya(void)
     GLfloat mat_diffuse[] = { 1.0, 1.0, 1.0, 0.0 };
     GLfloat mat_specular[] = { 0.0, 1.0, 0.0, 0.0 };
     GLfloat mat_shininess[] = { 50.0 };
-    GLfloat light_position[] = { 1.0, 0.0, 1.0, 0.0 };
+    GLfloat light_position[] = { 100.0, 100.0, 100.0, 0.0 };
 
 
     glShadeModel(GL_SMOOTH);
@@ -70,7 +70,11 @@ void mouseMotion(int x, int y) {
 
         glLoadIdentity();
         gluLookAt(0.0f, 40.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f); //mengatur penglihatan objek
-        glRotatef(xrot, 1.0, 0.0, 0.0);
+		std::cout << xrot << " " << yrot << std::endl;
+		if (xrot <= -6.0f) {
+			xrot = -6.0f;
+		}
+		glRotatef(xrot, 1.0, 0.0, 0.0);
         glRotatef(yrot, 0.0, 1.0, 0.0);
 
         glutPostRedisplay();
