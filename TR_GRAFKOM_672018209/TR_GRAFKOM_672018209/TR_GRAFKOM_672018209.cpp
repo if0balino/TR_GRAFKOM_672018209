@@ -70,7 +70,7 @@ void mouseMotion(int x, int y) {
 
         glLoadIdentity();
         gluLookAt(0.0f, 40.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f); //mengatur penglihatan objek
-		std::cout << xrot << " " << yrot << std::endl;
+		
 		if (xrot <= -6.0f) {
 			xrot = -6.0f;
 		}
