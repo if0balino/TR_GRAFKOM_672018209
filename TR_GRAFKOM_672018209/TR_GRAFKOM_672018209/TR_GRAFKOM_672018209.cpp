@@ -24,30 +24,30 @@ int is_depth;
 
 void initcahaya(void)
 {
-    GLfloat mat_ambient[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_ambient[] = { 1.0, 1.0, 1.0, 0.0 };
+    GLfloat mat_diffuse[] = { 1.0, 1.0, 1.0, 0.0 };
+    GLfloat mat_specular[] = { 0.0, 1.0, 0.0, 0.0 };
     GLfloat mat_shininess[] = { 50.0 };
-    GLfloat light_position[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat light_color[] = { 1.0 , 1.0, 1.0, 1.0 };
+    GLfloat light_position[] = { 1.0, 0.0, 1.0, 0.0 };
 
     glClearColor(0.0, 0.0, 0.0, 0.0);
 
     glShadeModel(GL_SMOOTH);
-    //glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-    //glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
     glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
     glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-    glLightfv(GL_LIGHT0, GL_COLOR, light_color);
-    
     
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
     glEnable(GL_COLOR_MATERIAL);
+
 }
+
+
 
 void mouse(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
@@ -74,7 +74,7 @@ void mouseMotion(int x, int y) {
 
         glLoadIdentity();
         //gluLookAt(0.0f, 300.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f); //mengatur penglihatan objek
-        gluLookAt(0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+        gluLookAt(0.0f, 0.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
         glRotatef(xrot, 1.0, 0.0, 0.0);
         glRotatef(yrot, 0.0, 1.0, 0.0);
 
@@ -193,6 +193,14 @@ void display() {
         glClear(GL_COLOR_BUFFER_BIT);
     
     
+    glBegin(GL_POLYGON);
+    glColor3f(0.0, 1.0, 1.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glVertex3f(0.0, 0.0, 0.0);
+    glEnd();
+
     atasdepan(211, 236, 237);
     badancerobong(211, 236, 237);
     bawah(153, 251, 255);
@@ -256,7 +264,7 @@ int main(int argc, char** argv) {
     is_depth = 1;
     glLoadIdentity(); // dihitung dengan matrix identitas
     //gluOrtho2D(0.0, 640.0, 0.0, 480.0); // untuk memberikan sistem koordinat kepada windows yang kita buat
-    gluLookAt(0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    gluLookAt(0.0f, 0.0f, 100.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
     initcahaya();
     glutDisplayFunc(display);
