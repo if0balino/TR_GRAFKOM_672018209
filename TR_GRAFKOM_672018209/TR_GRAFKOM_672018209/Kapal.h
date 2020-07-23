@@ -5664,6 +5664,7 @@ void ujungcerobong(int r, int g, int b) {
 	glVertex3d(48.078285, 85.756302, 16.067366);
 	glEnd();
 }
+
 //atasdepan(255, 255, 255);
 //badancerobong(255, 255, 255);
 //bawah(255, 255, 255);
