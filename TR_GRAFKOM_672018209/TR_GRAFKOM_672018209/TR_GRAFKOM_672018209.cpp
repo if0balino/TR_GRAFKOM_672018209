@@ -202,7 +202,8 @@ void display() {
     sirine(255, 97, 242);
     tiang(232, 252, 252);
     ujungcerobong(232, 252, 252);
-    laut(10, 0, 97);
+    //laut(10, 0, 97);
+    laut(255, 255, 255);
     Pelampung(245, 245, 66);
     cerobong(156, 134, 93);
 
