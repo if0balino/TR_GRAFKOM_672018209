@@ -10,6 +10,7 @@ GLuint _texture2ID; //jendela
 GLuint _texture3ID; //jendela
 GLuint _texture4ID; //sunset
 GLuint _texture5ID; //milki
+GLuint _texture6ID; //helipad
 
 
 
@@ -38,6 +39,7 @@ void initRendering() {
    _texture3ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/j.bmp");
    _texture4ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/senja.bmp");
    _texture5ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/milki1.bmp");
+   _texture6ID = loadBMP_custom("C:/Users/LENOVO/source/repos/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/TR_GRAFKOM_672018209/helipad.bmp");
 }
 
 
@@ -224,6 +226,11 @@ void display() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     samping(232, 252, 252); //jendela
+    
+    glBindTexture(GL_TEXTURE_2D, _texture6ID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    lantaidepan(255, 247, 156); //helipad
 
     glBindTexture(GL_TEXTURE_2D, _texture4ID);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

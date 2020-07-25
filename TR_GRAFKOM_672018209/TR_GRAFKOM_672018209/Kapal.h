@@ -4264,6 +4264,7 @@ void lantaidepan(int r, int g, int b) {
 	glVertex3d(-81.176308, 52.757305, -11.875741);
 	glEnd();
 	glBegin(GL_POLYGON);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3d(-92.086311, 52.757301, 21.058258);
 	glVertex3d(-87.993309, 52.757301, 22.371258);
 	glVertex3d(-83.647308, 52.757301, 23.04026);
@@ -4275,12 +4276,14 @@ void lantaidepan(int r, int g, int b) {
 	glVertex3d(-83.647308, 52.757301, 22.86026);
 	glVertex3d(-87.993309, 52.757301, 22.190258);
 	glVertex3d(-92.087311, 52.757301, 20.878258);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3d(-95.771309, 52.757301, 18.97226);
 	glVertex3d(-97.414307, 52.757301, 17.818258);
 	glVertex3d(-98.904312, 52.757301, 16.546259);
 	glVertex3d(-100.225311, 52.757301, 15.166259);
 	glVertex3d(-101.365311, 52.757301, 13.693258);
 	glVertex3d(-102.314308, 52.757301, 12.141258);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3d(-103.06131, 52.757301, 10.524259);
 	glVertex3d(-103.600311, 52.757301, 8.858259);
 	glVertex3d(-103.925308, 52.757301, 7.159259);
@@ -4289,6 +4292,7 @@ void lantaidepan(int r, int g, int b) {
 	glVertex3d(-103.925308, 52.757301, 7.339259);
 	glVertex3d(-103.600311, 52.757301, 9.038259);
 	glVertex3d(-103.06131, 52.757301, 10.704259);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3d(-102.314308, 52.757301, 12.321259);
 	glVertex3d(-101.365311, 52.757301, 13.874258);
 	glVertex3d(-100.225311, 52.757301, 15.347259);
@@ -4297,15 +4301,23 @@ void lantaidepan(int r, int g, int b) {
 	glVertex3d(-95.771309, 52.757301, 19.15226);
 	glEnd();
 	glBegin(GL_POLYGON);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3d(-87.993309, 52.767303, -11.301742);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3d(-83.647308, 52.767303, -11.971742);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3d(-83.647308, 52.757305, -11.971742);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3d(-87.993309, 52.757305, -11.301742);
 	glEnd();
 	glBegin(GL_POLYGON);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3d(-92.087311, 52.757301, 20.878258);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3d(-87.993309, 52.757301, 22.190258);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3d(-87.993309, 52.7673, 22.190258);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3d(-92.087311, 52.7673, 20.878258);
 	glEnd();
 	glBegin(GL_POLYGON);
@@ -4375,6 +4387,7 @@ void lantaidepan(int r, int g, int b) {
 	glVertex3d(-80.929306, 52.757305, -12.055741);
 	glEnd();
 	glBegin(GL_POLYGON);
+	
 	glVertex3d(-80.929306, 52.7673, 22.925159);
 	glVertex3d(-80.929306, 52.7673, 22.94426);
 	glVertex3d(-73.267609, 52.7673, 22.94426);
@@ -4559,6 +4572,7 @@ void lantaidepan(int r, int g, int b) {
 	glVertex3d(-80.929306, 52.757305, -12.055741);
 	glEnd();
 	glBegin(GL_POLYGON);
+	
 	glVertex3d(-100.225311, 52.767303, 15.166259);
 	glVertex3d(-101.365311, 52.767303, 13.693258);
 	glVertex3d(-101.365311, 52.757301, 13.693258);
