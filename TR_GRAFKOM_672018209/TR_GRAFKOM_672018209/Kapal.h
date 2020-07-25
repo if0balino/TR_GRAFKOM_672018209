@@ -5122,9 +5122,13 @@ void samping(int r, int g, int b) {
 	glVertex3d(84.965691, 55.755302, -12.055741);
 	glEnd();
 	glBegin(GL_POLYGON);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3d(-57.034309, 55.755302, -12.555741);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3d(-57.034309, 67.755302, -12.555739);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3d(84.965691, 67.755302, -12.555739);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3d(84.965691, 55.755302, -12.555741);
 	glEnd();
 	glBegin(GL_POLYGON);
@@ -5675,13 +5679,13 @@ void ujungcerobong(int r, int g, int b) {
 void langit(int r, int g, int b) {
 	glColor3ub(r, g, b);
 	glBegin(GL_POLYGON);
-	glTexCoord2f(0.0, 1.0);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3d(299.699188, 591.422913, 591.422913);
 	glTexCoord2f(1.0, 0.0);
 	glVertex3d(299.699127, -591.422913, 591.422913);
-	glTexCoord2f(1.0, 1.0);
-	glVertex3d(299.699127, -591.422913, -591.422913);
 	glTexCoord2f(0.0, 0.0);
+	glVertex3d(299.699127, -591.422913, -591.422913);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3d(299.699188, 591.422913, -591.422913);
 	glEnd();
 }
