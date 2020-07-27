@@ -209,6 +209,7 @@ void display() {
     ujungcerobong(232, 252, 252);
     Pelampung(245, 245, 66);
     cerobong(156, 134, 93);
+    lantaidepan(255, 247, 156); 
 
     glPopMatrix();
     glEnable(GL_TEXTURE_2D);
@@ -230,7 +231,7 @@ void display() {
     glBindTexture(GL_TEXTURE_2D, _texture6ID);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    lantaidepan(255, 247, 156); //helipad
+    heli(255, 247, 156); //helipad
 
     glBindTexture(GL_TEXTURE_2D, _texture4ID);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
