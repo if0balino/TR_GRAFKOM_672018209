@@ -5703,6 +5703,15 @@ void langit(int r, int g, int b) {
 	glVertex3d(299.699188, 591.422913, -591.422913);
 	glEnd();
 }
+void heli(int r, int g, int b) {
+	glColor3ub(r, g, b);
+	glBegin(GL_POLYGON);
+	glVertex3d(-99.036491, 53.202282, 14.137138);
+	glVertex3d(-80.659157, 53.202282, 14.137138);
+	glVertex3d(-80.659157, 53.202282, -4.240199);
+	glVertex3d(-99.036491, 53.202282, -4.240199);
+	glEnd();
+}
 //atasdepan(255, 255, 255);
 //badancerobong(255, 255, 255);
 //bawah(255, 255, 255);
