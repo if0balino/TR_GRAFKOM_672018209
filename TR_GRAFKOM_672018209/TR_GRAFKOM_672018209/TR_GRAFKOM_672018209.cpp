@@ -2,7 +2,6 @@
 #include <GL/freeglut.h>
 #include <math.h>
 #include "Kapal.h"
-
 #include "ImageBMP.h"
 
 GLuint _textureID; //laut
@@ -11,9 +10,6 @@ GLuint _texture3ID; //jendela
 GLuint _texture4ID; //sunset
 GLuint _texture5ID; //milki
 GLuint _texture6ID; //helipad
-
-
-
 
 void display();
 void ukuran(int, int);
@@ -76,7 +72,6 @@ void mouse(int button, int state, int x, int y) {
         ydiff = -y + xrot;
 
     }
-
     else
         mouseDown = false;
     display();
@@ -95,7 +90,6 @@ void mouseMotion(int x, int y) {
 		}
 		glRotatef(xrot, 1.0, 0.0, 0.0);
         glRotatef(yrot, 0.0, 1.0, 0.0);
-
         glutPostRedisplay();
     }
 }
@@ -172,7 +166,6 @@ void onSpecialKeyPressed(int key, int x, int y) {
     case GLUT_KEY_LEFT:
         glTranslatef(-3.0, 0.0, 0.0);
         posX += -3.0;
-
         break;
     case GLUT_KEY_RIGHT:
         glTranslatef(3.0, 0.0, 0.0);
@@ -263,16 +256,13 @@ void idle() {
         xrot += 0.3f;
         yrot += 0.4f;
     }
-
     glutPostRedisplay();
 }
 
 
 
 void ukuran(int lebar, int tinggi) {
-    if (tinggi == 0)
-        tinggi = 1;
-
+    if (tinggi == 0) tinggi = 1;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(55.0, lebar / tinggi, 50.0, 2500.0);
